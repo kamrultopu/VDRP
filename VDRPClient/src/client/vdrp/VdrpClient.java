@@ -10,7 +10,12 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
+
+import javax.crypto.NoSuchPaddingException;
 
 import config.Config;
 
@@ -18,18 +23,23 @@ public class VdrpClient {
 	static final String UPLOAD_URL = "http://localhost:8080//VDRPServer//Uploader";
 	static final String DOWNLOAD_URL="http://localhost:8080//VDRPServer//Access";
 	static final int BUFFER_SIZE = 32;
-	ElGamal eg;
+	
 	Config cfg;
 	final int BYTE_SIZE = 32;
-	public VdrpClient(){
-		if(getConfig() == null){
-			eg = new ElGamal();
-		}
-		
+	public VdrpClient() throws IOException, NoSuchAlgorithmException, NoSuchProviderException, InvalidKeySpecException, NoSuchPaddingException, ClassNotFoundException{
+		cfg = getConfig();
 		//eg.showParameter();
 	}
-	private Config getConfig(){
-		return null;
+	private Config getConfig() throws IOException, NoSuchAlgorithmException, NoSuchProviderException, InvalidKeySpecException, NoSuchPaddingException, ClassNotFoundException{
+		Config cfg;
+		String configFileName = "Config//privateKey";
+		File conf = new File(configFileName);
+		if( conf.exists()){
+			cfg = new Config(configFileName);
+		} else {
+			cfg = new Config();
+		}
+		return cfg;
 	}
 
 	public String uploadFile(String filename, int nCopy) throws IOException{
@@ -64,7 +74,7 @@ public class VdrpClient {
 		
 		SecureRandom rnd = new SecureRandom();
         while ((bytesRead = inputStream.read(buffer)) != -1) {
-        	byte[] cipherText = eg.encryption(buffer, rnd);
+        	byte[] cipherText = cfg.eg.encryption(buffer, rnd);
             outputStream.write(cipherText, 0, cipherText.length);
         }
         
@@ -133,7 +143,7 @@ public class VdrpClient {
 			
 			while((bytesRead=inputStream.read(buffer)) != -1 ){
 				//byte[] decode = Base64.decode(buffer);
-				byte[] plainText = eg.decryption(buffer);
+				byte[] plainText = cfg.eg.decryption(buffer);
 				outputStream.write(plainText, 0, plainText.length);
 				//os.write(plainText, 0, plainText.length);
 			}
