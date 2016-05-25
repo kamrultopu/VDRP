@@ -47,6 +47,7 @@ public class ElGamal {
         Object obj = istream.readObject();
         pubKey = ((KeyPair)obj).getPublic();
         privKey = ((KeyPair)obj).getPrivate();
+        System.out.println("in config file");
 	}
 	public ElGamal() throws IOException, ClassNotFoundException{
 		Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
