@@ -28,7 +28,7 @@ public class Access extends HttpServlet {
     static final int BUFFER_SIZE = 64;
     static final String SUCCESS = "SUCCESS";
     static final String ERROR = "ERROR";
-    static final String SAVE_DIR = "D:\\NetBeansWorkSpace\\VDRPServer\\FileFolder\\";
+    static final String SAVE_DIR = "C:\\Users\\kamrul\\Desktop\\VDRP\\VDRP\\VDRPServer\\FileFolder\\";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -54,7 +54,7 @@ public class Access extends HttpServlet {
         response.setHeader("Content-disposition", "attachment;filename="+fileName);
         int index = fileName.indexOf(".txt");
         String ext = fileName.substring(index);
-        String fromFileName = SAVE_DIR + fileName.substring(0,index) + Integer.toString(1) + ext ;//+ Integer.toString(1);
+        String fromFileName = SAVE_DIR + fileName.substring(0,index) + nCopy + ext ;//+ Integer.toString(1);
         File fromFile = new File(fromFileName);
         FileInputStream inputStream = new FileInputStream(fromFile);
         ServletContext context = getServletContext();

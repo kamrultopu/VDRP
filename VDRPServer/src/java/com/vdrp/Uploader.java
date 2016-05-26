@@ -24,7 +24,7 @@ public class Uploader extends HttpServlet {
     static final int BUFFER_SIZE = 64;
     static final String SUCCESS = "SUCCESS";
     static final String ERROR = "ERROR";
-    static final String SAVE_DIR = "D:\\NetBeansWorkSpace\\VDRPServer\\FileFolder\\";
+    static final String SAVE_DIR = "C:\\Users\\kamrul\\Desktop\\VDRP\\VDRP\\VDRPServer\\FileFolder\\";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.

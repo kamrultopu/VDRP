@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vdrp.client.view.ClientController">
+   <children>
+      <TabPane layoutY="-1.0" prefHeight="400.0" prefWidth="300.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Upload">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="fileChooseButton" layoutX="184.0" layoutY="95.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="File" />
+                        <TextField fx:id="uploadFilePath" layoutX="35.0" layoutY="95.0" />
+                        <ChoiceBox fx:id="choiceBoxNoOfCopy" layoutX="130.0" layoutY="136.0" prefHeight="25.0" prefWidth="54.0" />
+                        <Button fx:id="uploadFileButton" layoutX="195.0" layoutY="206.0" mnemonicParsing="false" text="Upload" />
+                        <Label fx:id="fileUploadStatus" layoutX="71.0" layoutY="268.0" visible="false" />
+                        <Label layoutX="195.0" layoutY="140.0" text="copy" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+          <Tab text="Download">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="buttonSave" layoutX="196.0" layoutY="122.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="Save As" />
+                        <TextField fx:id="downloadFolderName" layoutX="121.0" layoutY="83.0" />
+                        <Button fx:id="buttonDestination" layoutX="4.0" layoutY="83.0" mnemonicParsing="false" text="Destination Folder" />
+                        <Label layoutX="61.0" layoutY="44.0" text="filename" />
+                        <TextField fx:id="downloadFileName" layoutX="122.0" layoutY="40.0" />
+                        <Label fx:id="downloadStatus" layoutX="84.0" layoutY="224.0" text="Label" visible="false" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Verify">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ChoiceBox fx:id="verifyChoiceBox" layoutX="130.0" layoutY="173.0" prefHeight="25.0" prefWidth="54.0" />
+                        <TextField fx:id="verifyFileName" layoutX="130.0" layoutY="126.0" />
+                        <Label layoutX="66.0" layoutY="130.0" text="File Name" />
+                        <Label layoutX="66.0" layoutY="177.0" text="copy" />
+                        <Button fx:id="buttonVerify" layoutX="205.0" layoutY="223.0" mnemonicParsing="false" text="Verify" />
+                        <Label fx:id="verificationStatus" layoutX="105.0" layoutY="290.0" text="Label" visible="false" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
